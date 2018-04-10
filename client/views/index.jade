@@ -1,0 +1,21 @@
+extends layout
+block content
+	div.row
+		div.col-md-12
+			div.wrap
+				if (!user)
+					p.form-title Log In
+					form.login(action="/login", method="post")
+						input(type='text', name='username', placeholder='Username')
+						input(type='password', name='password', placeholder='Password')
+						input.btn.btn-success.btn-sm(type='submit', value='Login')
+						div.register-forgot
+							div.row
+								div.col-md-6
+									a.register(href='/register') Register
+								div.col-md-6
+									a.forgot-password(href='/forgot') Forgot Password
+				if (user)
+					p.form-title #{user.username}
+					p.logout
+						a(href="/logout") Logout
